@@ -1,5 +1,5 @@
 CXX = gcc
-CXXFLAGS = -g
+CXXFLAGS =
 
 CCR = riscv64-unknown-elf-gcc
 LINKR = riscv64-unknown-elf-gcc
@@ -11,9 +11,9 @@ LINKRFLAGS = -static -specs=htif_nano.specs
 EXEC = main
 EXECR = mainrisc
 
-OBJS =  main.o function.o
-OBJR =  main.riscv.o function.riscv.o 
-INC = atom.h function.h neighbor.h types.h
+OBJS =  main.o
+OBJR =  main.riscv.o
+INC = types.h
 
 #regola:
 #	python3 ...
@@ -31,15 +31,8 @@ $(EXECR): $(OBJR)
 main.o: main.c
 	${CXX} ${CXXFLAGS} -c main.c
 
-function.o: function.c
-	${CXX} ${CXXFLAGS} -c function.c
-
 main.riscv.o: main.c
-	${CCR} ${CCRFLAGS} -c main.c
-
-function.riscv.o: function.c
-	${CCR} ${CCRFLAGS} -c function.c	
-
+	${CCR} ${CCRFLAGS} -c main.c	
 
 link: $(OBJS)
 	$(LINKR) $(LINKRFLAGS) $(OBJS) -o $(EXECR).riscv 

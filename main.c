@@ -1,6 +1,8 @@
+#include <stdlib.h>
+#include <stdio.h>
 #include "atom.h"
 #include "neighbor.h"
-#include "function.h"
+#include "function.c"
 #define DO_GENERATION 1
 #ifndef DO_GENERATION
     //libraries to manage files
@@ -10,16 +12,17 @@
     using namespace std;
 #endif
 
+//MAIN function, calling "function"
 int main(int argc, char** argv){
-    //printf("\n # Running the simulation: \n");
+    printf("\n # Running the simulation: \n");
     //variable inizialization 
     int me=0;
     int ntypes = 4;
     Atom atom;
     Neighbor neighbor;
     #ifdef DO_GENERATION
-        #include "/home/emilio/ACAProj/PythonScript/atom_data.h"
-        #include "/home/emilio/ACAProj/PythonScript/neigh_data.h"
+        #include "atom_data.h"
+        #include "neigh_data.h"
     #else
         //READ ATOM FILE
         printf(" # Reading file from atom.txt :\n");
@@ -27,7 +30,7 @@ int main(int argc, char** argv){
 
         //Declare variables
         int natoms, nlocal, nghost, nmax;
-        MMD_float virial, mass, temp;
+        double virial, mass, temp;
         int comm_size, reverse_size, border_size, tmp;
 
         //Read from file
@@ -35,9 +38,9 @@ int main(int argc, char** argv){
         file >> nlocal;
         file >> nghost;
         file >> nmax;
-        MMD_float* x = new MMD_float[(nlocal + nghost)*PAD];
-        MMD_float* v = new MMD_float[(nlocal + nghost)*PAD];
-        MMD_float* f = new MMD_float[(nlocal + nghost)*PAD];
+        double* x = new double[(nlocal + nghost)*PAD];
+        double* v = new double[(nlocal + nghost)*PAD];
+        double* f = new double[(nlocal + nghost)*PAD];
         uint64_t aux = 0;
 
         int* type = new int[nlocal + nghost];
@@ -45,19 +48,19 @@ int main(int argc, char** argv){
         for (int i = 0; i < (nlocal + nghost)*PAD; i++) {
             //file >> x[i];
             file >> aux;
-            x[i] = *reinterpret_cast<MMD_float*> (&aux);
+            x[i] = *reinterpret_cast<double*> (&aux);
         }
         
         for (int i = 0; i < (nlocal + nghost)*PAD; i++) {
             //file >> v[i];
             file >> aux;
-            v[i] = *reinterpret_cast<MMD_float*> (&aux);
+            v[i] = *reinterpret_cast<double*> (&aux);
         }
         
         for (int i = 0; i < (nlocal + nghost)*PAD; i++) {
             //file >> f[i];
             file >> aux;
-            f[i] = *reinterpret_cast<MMD_float*> (&aux);
+            f[i] = *reinterpret_cast<double*> (&aux);
         }
         
         for (int i = 0; i < nlocal + nghost; i++) {
@@ -94,6 +97,7 @@ int main(int argc, char** argv){
         neigh.close();
 
     #endif
+
     //Assign the variables for ATOMS
     atom.natoms = natoms;
     atom.nlocal = nlocal;
@@ -101,13 +105,13 @@ int main(int argc, char** argv){
     atom.nmax = nmax;
     #ifdef DO_GENERATION
         for (int i = 0; i < (nlocal + nghost)*PAD; i++) {
-            x_f[i] = *((MMD_float*)(&x[i]));
+            x_f[i] = *((double*)(&x[i]));
         }
         for (int i = 0; i < (nlocal + nghost)*PAD; i++) {
-            v_f[i] = *((MMD_float*)(&v[i]));
+            v_f[i] = *((double*)(&v[i]));
         }
         for (int i = 0; i < (nlocal + nghost)*PAD; i++) {
-            f_f[i] = *((MMD_float*)(&f[i]));
+            f_f[i] = *((double*)(&f[i]));
         }
         atom.x = x_f;
         atom.v = v_f;
@@ -120,7 +124,6 @@ int main(int argc, char** argv){
     atom.ntypes = ntypes;
     atom.type = type;
 
-    /*
     printf("\t> Natoms: %d\n", atom.natoms);
     printf("\t> Nlocal: %d\n", atom.nlocal);
     printf("\t> Nghost: %d\n", atom.nghost);
@@ -129,18 +132,16 @@ int main(int argc, char** argv){
     printf("\t> f[0]: %f\n", atom.f[0]);
     printf("\t> type[0]: %d\n", atom.type[0]);
     printf(" # Done ...\n");
-    */
 
     //Assign the variables for NEIGHBORS
     neighbor.nmax = f_nmax;
     neighbor.maxneighs = f_maxneighs;
     neighbor.numneigh = f_numneigh;
     neighbor.neighbors = f_neighbors;
-    /*
+
     printf("\t> Nmax: %d\n", f_nmax);
     printf("\t> Maxneighs: %d\n", neighbor.maxneighs);
     printf(" # Done ...\n");
-    */
 
     //Run the simulation
     compute_original(atom, neighbor, me);
