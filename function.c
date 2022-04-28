@@ -6,7 +6,9 @@
 /*-----------------------COMPUTE FORCES------------------------------*/
 void compute_original(Atom atom, Neighbor neighbor, int me)
 {
-  int cutforce = 0.0;
+  //SETTING UP FORCES
+  printf(" # Setting up force :\n");
+  int cutforce = 2.5;
   int use_oldcompute = 0;
   int reneigh = 1;
   int ntypes = 4;
@@ -22,6 +24,24 @@ void compute_original(Atom atom, Neighbor neighbor, int me)
     sigma[i] = 1.0;
   }
 
+  MMD_float epsilon_f, sigma_f;
+  epsilon_f=1.0;
+  sigma_f=1.0;
+  for(int i=0; i<ntypes*ntypes; i++) {
+    epsilon[i] = epsilon_f;
+    sigma[i] = sigma_f;
+    sigma6[i] = sigma_f*sigma_f*sigma_f*sigma_f*sigma_f*sigma_f;
+  }
+  
+  for(int i = 0; i<ntypes*ntypes; i++)
+   cutforcesq[i] = cutforce * cutforce;
+  
+  printf("\t> epsilon: %f\n", epsilon_f);
+  printf("\t> sigma: %f\n", sigma_f);
+  printf("\t> cutforce: %f\n", cutforce);
+  
+
+  //Setting up the parameters of the function
   int nlocal = atom.nlocal;
   int nall = atom.nlocal + atom.nghost;
   MMD_float* x = atom.x;
