@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include<stdlib.h>
 int f_maxneighs = 100;
 int f_nmax = 364;
 int* f_numneigh = malloc (f_nmax * sizeof(int));

@@ -21,8 +21,11 @@ int main(int argc, char** argv){
     Atom atom;
     Neighbor neighbor;
     #ifdef DO_GENERATION
+         printf("\n # 2 \n");
         #include "atom_data.h"
+        printf("\n # 3 \n");
         #include "neigh_data.h"
+        printf("\n # 4 \n");
     #else
         //READ ATOM FILE
         printf(" # Reading file from atom.txt :\n");

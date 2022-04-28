@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "cstdlib": "c",
-        "atom_data.h": "c"
+        "atom_data.h": "c",
+        "neigh_data.h": "c"
     }
 }
