@@ -1,8 +1,5 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include "atom.h"
-#include "neighbor.h"
-#include "function.c"
+#include "types.h"
+#include "function.h"
 #define DO_GENERATION 1
 #ifndef DO_GENERATION
     //libraries to manage files
@@ -14,18 +11,15 @@
 
 //MAIN function, calling "function"
 int main(int argc, char** argv){
-    printf("\n # Running the simulation: \n");
+    //printf("\n # Running the simulation: \n");
     //variable inizialization 
     int me=0;
     int ntypes = 4;
     Atom atom;
     Neighbor neighbor;
     #ifdef DO_GENERATION
-         printf("\n # 2 \n");
-        #include "atom_data.h"
-        printf("\n # 3 \n");
-        #include "neigh_data.h"
-        printf("\n # 4 \n");
+        #include "InputFile/atom_data.h"
+        #include "InputFile/neigh_data.h"
     #else
         //READ ATOM FILE
         printf(" # Reading file from atom.txt :\n");
@@ -130,9 +124,9 @@ int main(int argc, char** argv){
     printf("\t> Natoms: %d\n", atom.natoms);
     printf("\t> Nlocal: %d\n", atom.nlocal);
     printf("\t> Nghost: %d\n", atom.nghost);
-    printf("\t> x[0]: %f\n", atom.x[0]);
-    printf("\t> v[0]: %f\n", atom.v[0]);
-    printf("\t> f[0]: %f\n", atom.f[0]);
+    printf("\t> x[0]: %d\n", (int)atom.x[0]);
+    printf("\t> v[0]: %d\n", (int)atom.v[0]);
+    printf("\t> f[0]: %d\n", (int)atom.f[0]);
     printf("\t> type[0]: %d\n", atom.type[0]);
     printf(" # Done ...\n");
 
@@ -145,7 +139,6 @@ int main(int argc, char** argv){
     printf("\t> Nmax: %d\n", f_nmax);
     printf("\t> Maxneighs: %d\n", neighbor.maxneighs);
     printf(" # Done ...\n");
-
     //Run the simulation
     compute_original(atom, neighbor, me);
 }

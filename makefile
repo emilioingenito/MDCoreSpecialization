@@ -1,23 +1,18 @@
 CXX = gcc
-CXXFLAGS =
+CXXFLAGS = -g
 
 CCR = riscv64-unknown-elf-gcc
 LINKR = riscv64-unknown-elf-gcc
 
-#CCRFLAGS = -static -fno-common -fno-builtin-printf -fno-use-cxa-atexit -specs=htif_nano.specs -O3 -I./
-#LINKRFLAGS = -static -specs=htif_nano.specs -O3
-CCRFLAGS = -fno-builtin-printf -specs=htif_nano.specs -fno-common 
+CCRFLAGS = -fno-common -fno-builtin-printf -specs=htif_nano.specs 
 LINKRFLAGS = -static -specs=htif_nano.specs
+
 EXEC = main
 EXECR = mainrisc
 
-OBJS =  main.o
-OBJR =  main.riscv.o
-INC = types.h
-
-#regola:
-#	python3 ...
-#	$(EXEC)
+OBJS =  main.o function.o
+OBJR =  main.riscv.o function.riscv.o
+INC = types.h atom.h function.h 
 
 $(EXEC): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $(EXEC) $(OBJS)
@@ -31,8 +26,14 @@ $(EXECR): $(OBJR)
 main.o: main.c
 	${CXX} ${CXXFLAGS} -c main.c
 
+function.o: function.c
+	${CXX} ${CXXFLAGS} -c function.c
+
 main.riscv.o: main.c
 	${CCR} ${CCRFLAGS} -c main.c	
+
+function.riscv.o: function.c
+	${CCR} ${CCRFLAGS} -c function.c	
 
 link: $(OBJS)
 	$(LINKR) $(LINKRFLAGS) $(OBJS) -o $(EXECR).riscv 
@@ -40,6 +41,12 @@ link: $(OBJS)
 	@mv $(OBJS) CompileRISCV;
 
 $(OBJS): $(INC)
+
+input: 
+	python3 InputFile/read_atom.py
+	python3 InputFile/read_neigh.py
+
+#	$(EXEC)
 
 clean:
 	rm -f -r Compile CompileRISCV main mainrisc.riscv *.o

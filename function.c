@@ -1,4 +1,4 @@
-#define PAD 3
+#include "types.h"
 /*-----------------------CORE FUNCTION------------------------------*/
 /*-----------------------COMPUTE FORCES------------------------------*/
 void compute_original(Atom atom, Neighbor neighbor, int me)
@@ -33,9 +33,9 @@ void compute_original(Atom atom, Neighbor neighbor, int me)
   for(int i = 0; i<ntypes*ntypes; i++)
    cutforcesq[i] = cutforce * cutforce;
   
-  printf("\t> epsilon: %f\n", epsilon_f);
-  printf("\t> sigma: %f\n", sigma_f);
-  printf("\t> cutforce: %f\n", cutforce);
+  printf("\t> epsilon: %d\n", (int)epsilon_f);
+  printf("\t> sigma: %d\n", (int)sigma_f);
+  printf("\t> cutforce: %d\n", (int)cutforce);
   
 
   //Setting up the parameters of the function
