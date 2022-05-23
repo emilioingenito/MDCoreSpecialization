@@ -1,4 +1,5 @@
 #include "types.h"
+#include "print.h"
 /*-----------------------CORE FUNCTION------------------------------*/
 /*-----------------------COMPUTE FORCES------------------------------*/
 void compute_original(Atom atom, Neighbor neighbor, int me)
@@ -33,9 +34,9 @@ void compute_original(Atom atom, Neighbor neighbor, int me)
   for(int i = 0; i<ntypes*ntypes; i++)
    cutforcesq[i] = cutforce * cutforce;
   
-  printf("\t> epsilon: %d\n", (int)epsilon_f);
-  printf("\t> sigma: %d\n", (int)sigma_f);
-  printf("\t> cutforce: %d\n", (int)cutforce);
+  printf("\t> epsilon: "); print_float(epsilon_f); printf("\n");
+  printf("\t> sigma: "); print_float(sigma_f); printf("\n");
+  printf("\t> cutforce: "); print_float(cutforce); printf("\n");
   
 
   //Setting up the parameters of the function
@@ -58,6 +59,7 @@ void compute_original(Atom atom, Neighbor neighbor, int me)
   // loop over all neighbors of my atoms
   // store force on both atoms i and j
   for(int i = 0; i < nlocal; i++) {
+    asm volatile("main_loop:\n");
     const int* const neighs = &neighbor.neighbors[i * neighbor.maxneighs];
     const int numneigh = neighbor.numneigh[i];
     const double xtmp = x[i * PAD + 0];
@@ -65,6 +67,7 @@ void compute_original(Atom atom, Neighbor neighbor, int me)
     const double ztmp = x[i * PAD + 2];
     const int type_i = type[i];
     for(int k = 0; k < numneigh; k++) {
+      asm volatile("inner_loop:\n");
       const int j = neighs[k];
       const double delx = xtmp - x[j * PAD + 0];
       const double dely = ytmp - x[j * PAD + 1];
@@ -91,8 +94,8 @@ void compute_original(Atom atom, Neighbor neighbor, int me)
   }
 
   printf(" # End of computation\n");
-  printf("\t>Eng_vdwl: %f\n", eng_vdwl);
-  printf("\t>Virial: %f\n", virial);
+  printf("\t>Eng_vdwl: "); print_float(eng_vdwl); printf("\n");
+  printf("\t>Virial: "); print_float(virial); printf("\n");
   printf("\n---------------------------------------------------\n\n");
 
 }

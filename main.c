@@ -1,5 +1,6 @@
 #include "types.h"
 #include "function.h"
+#include "print.h"
 #define DO_GENERATION 1
 #ifndef DO_GENERATION
     //libraries to manage files
@@ -124,9 +125,9 @@ int main(int argc, char** argv){
     printf("\t> Natoms: %d\n", atom.natoms);
     printf("\t> Nlocal: %d\n", atom.nlocal);
     printf("\t> Nghost: %d\n", atom.nghost);
-    printf("\t> x[0]: %d\n", (int)atom.x[0]);
-    printf("\t> v[0]: %d\n", (int)atom.v[0]);
-    printf("\t> f[0]: %d\n", (int)atom.f[0]);
+    printf("\t> x[0]: "); print_float(atom.x[0]); printf("\n");
+    printf("\t> v[0]: "); print_float(atom.v[0]); printf("\n");
+    printf("\t> f[0]: "); print_float(atom.f[0]); printf("\n");
     printf("\t> type[0]: %d\n", atom.type[0]);
     printf(" # Done ...\n");
 

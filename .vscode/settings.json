@@ -2,6 +2,8 @@
     "files.associations": {
         "cstdlib": "c",
         "atom_data.h": "c",
-        "neigh_data.h": "c"
+        "neigh_data.h": "c",
+        "cmath": "c",
+        "*.tcc": "c"
     }
 }

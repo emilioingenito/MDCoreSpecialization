@@ -10,9 +10,9 @@ LINKRFLAGS = -static -specs=htif_nano.specs
 EXEC = main
 EXECR = mainrisc
 
-OBJS =  main.o function.o
-OBJR =  main.riscv.o function.riscv.o
-INC = types.h atom.h function.h 
+OBJS =  main.o function.o print.o
+OBJR =  main.riscv.o function.riscv.o print.riscv.o
+INC = types.h atom.h function.h print.h
 
 $(EXEC): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $(EXEC) $(OBJS)
@@ -29,11 +29,17 @@ main.o: main.c
 function.o: function.c
 	${CXX} ${CXXFLAGS} -c function.c
 
+print.o: print.c
+	${CXX} ${CXXFLAGS} -c print.c
+
 main.riscv.o: main.c
-	${CCR} ${CCRFLAGS} -c main.c	
+	${CCR} ${CCRFLAGS} -c main.c
 
 function.riscv.o: function.c
-	${CCR} ${CCRFLAGS} -c function.c	
+	${CCR} ${CCRFLAGS} -c function.c
+
+print.riscv.o: print.c
+	${CCR} ${CCRFLAGS} -c print.c	
 
 link: $(OBJS)
 	$(LINKR) $(LINKRFLAGS) $(OBJS) -o $(EXECR).riscv 
