@@ -8,25 +8,44 @@ with open('/home/emilio/ACAProjC/CyclesAnalysis/cycles_out.txt','r') as source:
     need = False
     #var to store the previous number
     prev = 0
+    #static variables
+    tot_cycles = 374994
+    tot_instr = 195358
     #var to store the type of instruction
-    instr = input("Insert the name of the instruction:")    
+    instr = input("Insert the name of the instruction: ") 
+    min_c = 300   
   
     #loop the whole file
     for line in source:
         words = line.split()
         if (need):
             count += 1
-            cycles += int(words[1]) - prev
-        if (instr in words[8]):
+            cur_cycle = int(words[1])
+            cur_upd = cur_cycle - prev
+            cycles += cur_upd
+
+            if( (cur_upd < min_c) and (cur_upd > 0)):
+                min_c = int(words[1]) - prev
+        
+        cur_instr = words[8].strip().split(".")
+        if(instr == cur_instr[0]):
             need = True
-            prev = int(words[1])
+        elif((len(cur_instr) > 1) and instr == cur_instr[1]):
+            need = True
         else:
             need = False
+        prev = int(words[1])
+            
+
     #print summary
-    print("Cycle analysis performed for instructions containing ["+instr+"] : \n")
+    print("Cycle analysis performed for instruction ["+instr+"] : \n")
     print("cycles = [" + str(cycles) + "]\n")
     print("number of instructions = [" + str(count) + "]\n")
-    print("### cycles/instructions = [" + str(cycles/count) + "]\n\n")
+    print("min_cycles = [" + str(min_c) + "]\n")
+    if (count != 0):
+        print("### cycles/instructions = [" + str(round((cycles/count),1)) + "]\n")
+        print("### cycles/TOT cycles = [" + str(round((cycles*100/tot_cycles),1)) + "%]\n")
+        print("### occurrencies/TOT instructions = [" + str(round((count*100/tot_instr),1)) + "%]\n\n")
 
 
 
