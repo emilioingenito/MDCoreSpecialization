@@ -1,0 +1,82 @@
+-------------------RocketConfig With1BigCore
+Inner loop: eseguito in 83220cc
+Esecuzione totale impiega 374665 cc
+--769034 cycles
+
+-------------------FFTRocketConfig
+Inner loop: eseguito in 83220cc
+Esecuzione totale impiega 374665cc
+--768721 cycles
+
+-------------------HwachaRocketConfig
+Inner loop: eseguito in 82337cc
+Esecuzione totale impiega 361093 cc
+--755124 cycles
+
+-------------------GemminiRocketConfig
+Inner loop: eseguito in 82337cc
+Esecuzione totale impiega 361093cc
+--755124 cycles
+
+-------------------FPGemminiRocketConfig
+Inner loop: eseguito in 82337cc
+Esecuzione totale impiega 361093cc
+--755124 cycles
+
+
+----------- WithFPUWithoutDivSqrt() no change in performance
+----------- RV32RocketConfig no change in performance
+
+COMPARISON:
+
+RocketConfig : 769034 cycles
+
+SmallBoomConfig : 648738 cycles
+
+MediumBoomConfig : 593944 cycles
+
+LargeBoomConfig : 590416 cycles
+
+MegaBoomConfig : 551107 cycles
+
+IssueParams(issueWidth=2, numEntries=24, iqType=IQT_MEM.litValue, dispatchWidth=4),
+IssueParams(issueWidth=2, numEntries=20, iqType=IQT_INT.litValue, dispatchWidth=4),
+IssueParams(issueWidth=4, numEntries=64, iqType=IQT_FP.litValue , dispatchWidth=4)),
+MEGA BOOM 551107 cycles
+
+
+
+fetchWidth = 8,
+              decodeWidth = 8,
+              numRobEntries = 160,
+              issueParams = Seq(
+                IssueParams(issueWidth=2, numEntries=24, iqType=IQT_MEM.litValue, dispatchWidth=8),
+                IssueParams(issueWidth=8, numEntries=80, iqType=IQT_INT.litValue, dispatchWidth=8),
+                IssueParams(issueWidth=4, numEntries=64, iqType=IQT_FP.litValue , dispatchWidth=8)),
+              numIntPhysRegisters = 160,
+              numFpPhysRegisters = 160,
+              numLdqEntries = 48,
+              numStqEntries = 48,
+              maxBrCount = 28,
+              numFetchBufferEntries = 32,
+MEGABOOM 550995 cycles
+
+fetchWidth = 8,
+decodeWidth = 8,
+numRobEntries = 128,
+issueParams = Seq(
+  IssueParams(issueWidth=2, numEntries=24, iqType=IQT_MEM.litValue, dispatchWidth=8),
+  IssueParams(issueWidth=8, numEntries=80, iqType=IQT_INT.litValue, dispatchWidth=8),
+  IssueParams(issueWidth=6, numEntries=94, iqType=IQT_FP.litValue , dispatchWidth=8)),
+MEGABOOM 550591 cycles
+
+IssueParams(issueWidth=2, numEntries=24, iqType=IQT_MEM.litValue, dispatchWidth=4),
+IssueParams(issueWidth=5, numEntries=50, iqType=IQT_INT.litValue, dispatchWidth=4),
+IssueParams(issueWidth=2, numEntries=32, iqType=IQT_FP.litValue , dispatchWidth=4)),
+MEGA BOOM 549378 cycles
+
+IssueParams(issueWidth=2, numEntries=24, iqType=IQT_MEM.litValue, dispatchWidth=4),
+IssueParams(issueWidth=8, numEntries=80, iqType=IQT_INT.litValue, dispatchWidth=4),
+IssueParams(issueWidth=6, numEntries=94, iqType=IQT_FP.litValue , dispatchWidth=4)),
+MEGABOOM 549335 cycles
+  

@@ -38,17 +38,14 @@ void compute_original(Atom atom, Neighbor neighbor, int me)
   printf("\t> sigma: "); print_float(sigma_f); printf("\n");
   printf("\t> cutforce: "); print_float(cutforce); printf("\n");
   
-
   //Setting up the parameters of the function
   int nlocal = atom.nlocal;
   int nall = atom.nlocal + atom.nghost;
   double* x = atom.x;
   double* f = atom.f;
   int* type = atom.type;
-
   double eng_vdwl = 0;
   double virial = 0;
-  
   // clear force on own and ghost atoms
   for(int i = 0; i < nall; i++) {
     f[i * PAD + 0] = 0.0;
@@ -67,6 +64,7 @@ void compute_original(Atom atom, Neighbor neighbor, int me)
     const double ztmp = x[i * PAD + 2];
     const int type_i = type[i];
     for(int k = 0; k < numneigh; k++) {
+      #pragma unroll 8
       asm volatile("inner_loop:\n");
       const int j = neighs[k];
       const double delx = xtmp - x[j * PAD + 0];
@@ -86,7 +84,7 @@ void compute_original(Atom atom, Neighbor neighbor, int me)
         f[j * PAD + 1] -= dely * force;
         f[j * PAD + 2] -= delz * force;
 
-        //if(ENVFLAG) check was omitted here
+        
         eng_vdwl += (4.0 * sr6 * (sr6 - 1.0)) * epsilon[type_ij];
         virial += (delx * delx + dely * dely + delz * delz) * force;
       }

@@ -1,4 +1,4 @@
-int f_maxneighs = 2;
+int f_maxneighs = 20;
 int f_nmax = 364;
 int* f_numneigh = malloc (f_nmax * sizeof(int));
 int* f_neighbors = malloc (f_nmax * f_maxneighs * sizeof(int));

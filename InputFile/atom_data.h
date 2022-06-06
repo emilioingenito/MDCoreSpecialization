@@ -1,6 +1,6 @@
-int natoms = 4;
-int nlocal = 4;
-int nghost = 360;
+int natoms = 200;
+int nlocal = 200;
+int nghost = 80;
 int nmax = 20000;
 long unsigned int* x = malloc((nlocal + nghost)*PAD*sizeof(long unsigned int));
 long unsigned int* v = malloc((nlocal + nghost)*PAD*sizeof(long unsigned int));

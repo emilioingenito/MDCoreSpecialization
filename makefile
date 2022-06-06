@@ -1,7 +1,7 @@
 CXX = gcc
 CXXFLAGS = -g
 
-CCR = riscv64-unknown-elf-gcc
+CCR = riscv64-unknown-elf-gcc #-O3
 LINKR = riscv64-unknown-elf-gcc
 
 CCRFLAGS = -fno-common -fno-builtin-printf -specs=htif_nano.specs 

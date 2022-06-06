@@ -1,0 +1,94 @@
+total cycles: 374994
+total instructions = 195358
+
+Occurrencies of instructions:
+	Floating instr:
+	- fld	: 8657
+	- fsd	: 5005
+	- fadd	: 910
+	- fsub	: 900
+	- fmul	: 2286
+	- fdiv	: 86
+
+	Integer instr:
+	- ld/lw					: 49256
+	- add/addw/addi/addiw	: 49299
+	- slli/slliw			: 16305
+	- mulw					: 214
+	- sd/sw					: 11357
+	- mv					: 12302
+	- beqz					: 6627
+	
+	
+Clock cycles per instruction:
+	Floating instr:
+	- fld	: 5
+	- fsd	: 1,2
+	- fadd	: 4,2
+	- fsub	: 6
+	- fmul	: 2,5
+	- fdiv	: 58
+
+	Integer instr:
+	- ld/lw					: 2,2
+	- add/addw/addi/addiw	: 1,7
+	- slli/slliw			: 1
+	- mulw					: 4
+	- sd/sw					: 2,5
+	- mv					: 1
+	- beqz					: 2
+
+% Cycles of instruction (over the total cycles):
+	Floating instr:
+	- fld	: 11,6%
+	- fsd	: 1,7%
+	- fadd	: 1%
+	- fsub	: 1,4%
+	- fmul	: 1,5%
+	- fdiv	: 1,3%
+
+	Integer instr:
+	- ld/lw					: 27,8%
+	- add/addw/addi/addiw	: 22,3%
+	- slli/slliw			: 4,5%
+	- mulw					: 0,2%
+	- sd/sw					: 6,8%
+	- mv					: 3,3%
+	- beqz					: 3,8%
+
+	- altro : 12%
+
+% Occurrencies of instructions (over the total amount of instructions):
+	Floating instr:
+	- fld	: 4,4%
+	- fsd	: 2,6%
+	- fadd	: 0,5%
+	- fsub	: 0,5%
+	- fmul	: 1,2%
+	- fdiv	: 0,5%
+
+	Integer instr:
+	- ld/lw					: 25%
+	- add/addw/addi/addiw	: 25,3%
+	- slli/slliw			: 8,3%
+	- mulw					: 0,1%
+	- sd/sw					: 6%
+	- mv					: 6,3%
+	- beqz					: 3,4%
+
+	-altro : 15%
+
+=> problema dello stalling, dati che possono NON essere attendibili al 100% (attribuzione dubbia dei cycles per instruction)
+
+
+                
+	
+
+ 		
+
+	
+ 		
+	
+		
+ 		
+
