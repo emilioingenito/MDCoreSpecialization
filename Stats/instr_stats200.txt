@@ -15,7 +15,7 @@ Occurrencies of instructions:
 	- add/addw/addi/addiw	: 48983
 	- slli/slliw			: 16461
 	- mulw					: 410
-	- sd/sw					: 4922+6319
+	- sd/sw					: 11241
 	- mv					: 11651
 	- beqz					: 6493
 	
