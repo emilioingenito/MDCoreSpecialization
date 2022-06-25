@@ -28,19 +28,168 @@ Esecuzione totale impiega 361093cc
 ----------- RV32RocketConfig no change in performance
 
 COMPARISON:
+                    #WHOLE PROGRAM  #MAIN_LOOP
+RocketConfig :      296685 cc       36294 cc 
 
-RocketConfig : 296685 cycles
+SmallBoomConfig :   264561 cc       26788 CC
 
-SmallBoomConfig : 264561 cycles
+MediumBoomConfig :  245012 cc       22330 cc
 
-MediumBoomConfig : 245012 cycles
+LargeBoomConfig :   221576 cc       18378 cc
 
-LargeBoomConfig : 221576 cycles
+MegaBoomConfig :    212300 cc       13581 cc
 
-MegaBoomConfig : 212300 cycles
-
+CustomBoomConfig:   210601 cc       11535 cc
 IssueParams(issueWidth=2, numEntries=24, iqType=IQT_MEM.litValue, dispatchWidth=4),
 IssueParams(issueWidth=8, numEntries=80, iqType=IQT_INT.litValue, dispatchWidth=4),
 IssueParams(issueWidth=6, numEntries=94, iqType=IQT_FP.litValue , dispatchWidth=4)),
-MEGABOOM 210601 cycles
-  
+
+CustomBoomConfig:   218526 cc       13683 cc
+IssueParams(issueWidth=2, numEntries=24, iqType=IQT_MEM.litValue, dispatchWidth=4),
+IssueParams(issueWidth=8, numEntries=80, iqType=IQT_INT.litValue, dispatchWidth=4),
+IssueParams(issueWidth=2, numEntries=94, iqType=IQT_FP.litValue , dispatchWidth=4)),
+
+CustomBoomConfig:   218526 cc       13683 cc
+IssueParams(issueWidth=2, numEntries=24, iqType=IQT_MEM.litValue, dispatchWidth=4),
+IssueParams(issueWidth=6, numEntries=60, iqType=IQT_INT.litValue, dispatchWidth=4),
+IssueParams(issueWidth=2, numEntries=94, iqType=IQT_FP.litValue , dispatchWidth=4)),
+
+CustomBoomConfig:   218526 cc       13683 cc
+IssueParams(issueWidth=2, numEntries=24, iqType=IQT_MEM.litValue, dispatchWidth=4),
+IssueParams(issueWidth=10, numEntries=100, iqType=IQT_INT.litValue, dispatchWidth=4),
+IssueParams(issueWidth=2, numEntries=32, iqType=IQT_FP.litValue , dispatchWidth=4)),
+
+CustomBoomConfig:   217918 cc       12996 cc
+IssueParams(issueWidth=2, numEntries=24, iqType=IQT_MEM.litValue, dispatchWidth=4),
+IssueParams(issueWidth=2, numEntries=40, iqType=IQT_INT.litValue, dispatchWidth=4),
+IssueParams(issueWidth=4, numEntries=40, iqType=IQT_FP.litValue , dispatchWidth=4)),
+
+CustomBoomConfig:   216259 cc       11426 cc
+IssueParams(issueWidth=2, numEntries=24, iqType=IQT_MEM.litValue, dispatchWidth=4),
+IssueParams(issueWidth=2, numEntries=20, iqType=IQT_INT.litValue, dispatchWidth=4),
+IssueParams(issueWidth=6, numEntries=56, iqType=IQT_FP.litValue , dispatchWidth=4)),
+
+CustomBoomConfig:   216463 cc       11586 cc
+IssueParams(issueWidth=2, numEntries=24, iqType=IQT_MEM.litValue, dispatchWidth=4),
+IssueParams(issueWidth=2, numEntries=20, iqType=IQT_INT.litValue, dispatchWidth=4),
+IssueParams(issueWidth=8, numEntries=112, iqType=IQT_FP.litValue , dispatchWidth=4)),
+
+CustomBoomConfig:   216463 cc       11586 cc
+IssueParams(issueWidth=2, numEntries=24, iqType=IQT_MEM.litValue, dispatchWidth=4),
+IssueParams(issueWidth=2, numEntries=20, iqType=IQT_INT.litValue, dispatchWidth=4),
+IssueParams(issueWidth=8, numEntries=72, iqType=IQT_FP.litValue , dispatchWidth=4)),
+
+CustomBoomConfig:   216463 cc       11586 cc
+IssueParams(issueWidth=2, numEntries=24, iqType=IQT_MEM.litValue, dispatchWidth=4),
+IssueParams(issueWidth=2, numEntries=20, iqType=IQT_INT.litValue, dispatchWidth=4),
+IssueParams(issueWidth=10, numEntries=88, iqType=IQT_FP.litValue , dispatchWidth=4)),
+
+CustomBoomConfig:   216548 cc       11618 cc
+IssueParams(issueWidth=2, numEntries=24, iqType=IQT_MEM.litValue, dispatchWidth=4),
+IssueParams(issueWidth=2, numEntries=20, iqType=IQT_INT.litValue, dispatchWidth=4),
+IssueParams(issueWidth=6, numEntries=56, iqType=IQT_FP.litValue , dispatchWidth=4)),
+numLdqEntries=40
+numStqEntries=40
+
+CustomBoomConfig:   216078 cc        11490cc
+IssueParams(issueWidth=2, numEntries=24, iqType=IQT_MEM.litValue, dispatchWidth=4),
+IssueParams(issueWidth=8, numEntries=80, iqType=IQT_INT.litValue, dispatchWidth=4),
+IssueParams(issueWidth=8, numEntries=74, iqType=IQT_FP.litValue , dispatchWidth=4)),
+numIntPhysRegisters = 128,
+numFpPhysRegisters = 128,
+numLdqEntries = 40,
+numStqEntries = 40,
+
+CustomBoomConfig:   216445 cc        11755cc
+IssueParams(issueWidth=2, numEntries=24, iqType=IQT_MEM.litValue, dispatchWidth=4),
+IssueParams(issueWidth=2, numEntries=20, iqType=IQT_INT.litValue, dispatchWidth=4),
+IssueParams(issueWidth=6, numEntries=58, iqType=IQT_FP.litValue , dispatchWidth=4)),
+numIntPhysRegisters = 128,
+numFpPhysRegisters = 128,
+numLdqEntries = 40,
+numStqEntries = 40,
+maxBrCount = 20,
+numFetchBufferEntries = 40,
+
+CustomBoomConfig:   219238 cc        13995cc
+IssueParams(issueWidth=2, numEntries=24, iqType=IQT_MEM.litValue, dispatchWidth=4),
+IssueParams(issueWidth=2, numEntries=20, iqType=IQT_INT.litValue, dispatchWidth=4),
+IssueParams(issueWidth=6, numEntries=58, iqType=IQT_FP.litValue , dispatchWidth=4)),
+fpu = Some(freechips.rocketchip.tile.FPUParams(sfmaLatency=8, dfmaLatency=8, divSqrt=true))
+
+CustomBoomConfig:   215446 cc        10542cc
+IssueParams(issueWidth=2, numEntries=24, iqType=IQT_MEM.litValue, dispatchWidth=4),
+IssueParams(issueWidth=2, numEntries=20, iqType=IQT_INT.litValue, dispatchWidth=4),
+IssueParams(issueWidth=6, numEntries=58, iqType=IQT_FP.litValue , dispatchWidth=4)),
+fpu = Some(freechips.rocketchip.tile.FPUParams(sfmaLatency=2, dfmaLatency=2, divSqrt=true))
+
+CustomBoomConfig:   214831 cc       9884 cc
+IssueParams(issueWidth=2, numEntries=24, iqType=IQT_MEM.litValue, dispatchWidth=4),
+IssueParams(issueWidth=2, numEntries=20, iqType=IQT_INT.litValue, dispatchWidth=4),
+IssueParams(issueWidth=6, numEntries=58, iqType=IQT_FP.litValue , dispatchWidth=4)),
+fpu = Some(freechips.rocketchip.tile.FPUParams(sfmaLatency=1, dfmaLatency=1, divSqrt=true))
+
+CustomBoomConfig:   215833 cc       10858 cc
+IssueParams(issueWidth=2, numEntries=24, iqType=IQT_MEM.litValue, dispatchWidth=8),
+IssueParams(issueWidth=2, numEntries=20, iqType=IQT_INT.litValue, dispatchWidth=8),
+IssueParams(issueWidth=6, numEntries=58, iqType=IQT_FP.litValue , dispatchWidth=8)),
+fpu = Some(freechips.rocketchip.tile.FPUParams(sfmaLatency=1, dfmaLatency=1, divSqrt=true))
+
+CustomBoomConfig:   278544 cc       18225 cc
+IssueParams(issueWidth=2, numEntries=24, iqType=IQT_MEM.litValue, dispatchWidth=4),
+IssueParams(issueWidth=2, numEntries=20, iqType=IQT_INT.litValue, dispatchWidth=4),
+IssueParams(issueWidth=6, numEntries=58, iqType=IQT_FP.litValue , dispatchWidth=4)),
+fpu = Some(freechips.rocketchip.tile.FPUParams(sfmaLatency=1, dfmaLatency=1, divSqrt=true))
+enableBranchPrediction=false
+
+CustomBoomConfig:   214874 cc       9962 cc
+IssueParams(issueWidth=2, numEntries=24, iqType=IQT_MEM.litValue, dispatchWidth=4),
+IssueParams(issueWidth=2, numEntries=20, iqType=IQT_INT.litValue, dispatchWidth=4),
+IssueParams(issueWidth=6, numEntries=58, iqType=IQT_FP.litValue , dispatchWidth=4)),
+fpu = Some(freechips.rocketchip.tile.FPUParams(sfmaLatency=1, dfmaLatency=1, divSqrt=true))
+enablePrefetching = false,
+
+CustomBoomConfig:   212172 cc       9399 cc
+IssueParams(issueWidth=2, numEntries=24, iqType=IQT_MEM.litValue, dispatchWidth=4),
+IssueParams(issueWidth=2, numEntries=20, iqType=IQT_INT.litValue, dispatchWidth=4),
+IssueParams(issueWidth=6, numEntries=58, iqType=IQT_FP.litValue , dispatchWidth=4)),
+fpu = Some(freechips.rocketchip.tile.FPUParams(sfmaLatency=1, dfmaLatency=1, divSqrt=true))
+DCacheParams(rowBits = site(SystemBusKey).beatBits, nSets=64, nWays=16, nMSHRs=8, nTLBWays=32)
+ICacheParams(rowBits = site(SystemBusKey).beatBits, nSets=64, nWays=16, fetchBytes=4*4)
+
+211822cc 9444cc
+ftq = FtqParameters(nEntries=48),
+
+CustomBoomConfig:   210814 cc       9316 cc
+IssueParams(issueWidth=2, numEntries=24, iqType=IQT_MEM.litValue, dispatchWidth=4),
+IssueParams(issueWidth=2, numEntries=20, iqType=IQT_INT.litValue, dispatchWidth=4),
+IssueParams(issueWidth=6, numEntries=58, iqType=IQT_FP.litValue , dispatchWidth=4)),
+fpu = Some(freechips.rocketchip.tile.FPUParams(sfmaLatency=1, dfmaLatency=1, divSqrt=true))
+DCacheParams(rowBits = site(SystemBusKey).beatBits, nSets=64, nWays=32, nMSHRs=8, nTLBWays=32)
+ICacheParams(rowBits = site(SystemBusKey).beatBits, nSets=64, nWays=32, fetchBytes=4*4)
+
+CustomBoomConfig:   209817 cc       9383 cc
+IssueParams(issueWidth=2, numEntries=24, iqType=IQT_MEM.litValue, dispatchWidth=4),
+IssueParams(issueWidth=2, numEntries=20, iqType=IQT_INT.litValue, dispatchWidth=4),
+IssueParams(issueWidth=6, numEntries=58, iqType=IQT_FP.litValue , dispatchWidth=4)),
+fpu = Some(freechips.rocketchip.tile.FPUParams(sfmaLatency=1, dfmaLatency=1, divSqrt=true))
+DCacheParams(rowBits = site(SystemBusKey).beatBits, nSets=64, nWays=64, nMSHRs=8, nTLBWays=32)
+ICacheParams(rowBits = site(SystemBusKey).beatBits, nSets=64, nWays=64, fetchBytes=4*4)
+
+
+CustomBoomConfig:   210414 cc       9256 cc
+IssueParams(issueWidth=2, numEntries=24, iqType=IQT_MEM.litValue, dispatchWidth=4),
+IssueParams(issueWidth=2, numEntries=20, iqType=IQT_INT.litValue, dispatchWidth=4),
+IssueParams(issueWidth=6, numEntries=58, iqType=IQT_FP.litValue , dispatchWidth=4)),
+fpu = Some(freechips.rocketchip.tile.FPUParams(sfmaLatency=1, dfmaLatency=1, divSqrt=true))
+DCacheParams(rowBits = site(SystemBusKey).beatBits, nSets=64, nWays=32, nMSHRs=16, nTLBWays=32)
+ICacheParams(rowBits = site(SystemBusKey).beatBits, nSets=64, nWays=32, fetchBytes=4*4)
+
+CustomBoomConfig:   210387 cc       9417 cc
+IssueParams(issueWidth=2, numEntries=24, iqType=IQT_MEM.litValue, dispatchWidth=4),
+IssueParams(issueWidth=2, numEntries=20, iqType=IQT_INT.litValue, dispatchWidth=4),
+IssueParams(issueWidth=6, numEntries=58, iqType=IQT_FP.litValue , dispatchWidth=4)),
+fpu = Some(freechips.rocketchip.tile.FPUParams(sfmaLatency=1, dfmaLatency=1, divSqrt=true))
+DCacheParams(rowBits = site(SystemBusKey).beatBits, nSets=64, nWays=32, nMSHRs=32, nTLBWays=32)
+ICacheParams(rowBits = site(SystemBusKey).beatBits, nSets=64, nWays=32, fetchBytes=4*4)
+

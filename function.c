@@ -1,5 +1,18 @@
 #include "types.h"
 #include "print.h"
+#include <stdint.h>
+
+typedef uint64_t uint_csr64_t;
+
+static inline uint64_t csr_read_mcycle(void) {
+    uint_csr64_t value;        
+    __asm__ volatile ("csrr    %0, mcycle" 
+                      : "=r" (value)  /* output : register */
+                      : /* input : none */
+                      : /* clobbers: none */);
+    return value;
+}
+
 /*-----------------------CORE FUNCTION------------------------------*/
 /*-----------------------COMPUTE FORCES------------------------------*/
 void compute_original(Atom atom, Neighbor neighbor, int me)
@@ -52,7 +65,9 @@ void compute_original(Atom atom, Neighbor neighbor, int me)
     f[i * PAD + 1] = 0.0;
     f[i * PAD + 2] = 0.0;
   }
-  
+
+  uint_csr64_t  k = csr_read_mcycle();
+  printf("First cc of main loop : %ld\n", k);
   // loop over all neighbors of my atoms
   // store force on both atoms i and j
   for(int i = 0; i < nlocal; i++) {
@@ -91,9 +106,11 @@ void compute_original(Atom atom, Neighbor neighbor, int me)
     }
   }
 
+  k = csr_read_mcycle();
+  printf("Last cc of main loop : %ld\n", k);
+
   printf(" # End of computation\n");
   printf("\t>Eng_vdwl: "); print_float(eng_vdwl); printf("\n");
   printf("\t>Virial: "); print_float(virial); printf("\n");
   printf("\n---------------------------------------------------\n\n");
-
 }

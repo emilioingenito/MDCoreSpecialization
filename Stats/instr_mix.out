@@ -1,0 +1,25 @@
+TOT         INSTR = 13222   CC = 32394
+ld:		    #Inst=[400]6		ClockCycles=[853]10
+lw:		    #Inst=[908]14		ClockCycles=[908]10
+add:		#Inst=[1952]31	ClockCycles=[3518]40
+mulw:		#Inst=[200]3		ClockCycles=[200]2
+addiw:		#Inst=[204]		ClockCycles=[204]2
+slli:		#Inst=[628]10		ClockCycles=[628]7
+srli:		#Inst=[4] 		ClockCycles=[4]
+addi:		#Inst=[1068]17	ClockCycles=[1068]13
+slliw:		#Inst=[158]3		ClockCycles=[158]
+addw:		#Inst=[308]5		ClockCycles=[330]4
+beqz:		#Inst=[154]3		ClockCycles=[280]3
+bne:		#Inst=[354]5		ClockCycles=[569]6
+auipc:		#Inst=[2]	    ClockCycles=[2]
+jal:		#Inst=[2]		ClockCycles=[4]
+            6342            8726 
+fld:		#Inst=[2248]33	ClockCycles=[4446]19
+fsub:		#Inst=[720]11		ClockCycles=[1382]6
+fmul:		#Inst=[1315]19	ClockCycles=[4605]20
+fmadd:		#Inst=[953]14		ClockCycles=[2388]10
+flt:		#Inst=[154]2		ClockCycles=[462]
+fdiv:		#Inst=[129]2		ClockCycles=[7112]30
+fsd:		#Inst=[774]11		ClockCycles=[951]4
+fnmsub:		#Inst=[387]6		ClockCycles=[2322]10
+            6880            23668

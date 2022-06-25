@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 //function used to print a float as an int
 void print_float(double f){
     double y_float;
