@@ -1,5 +1,5 @@
-# ACAProjC
-Advanced Computer Architecture project in C
+# Abstract
+
 Aim of this project was to analyze and optimize a portion of code belonging to
 miniMD, a micro-application for molecular dynamics simulation. In particular, we
 decided to extrapolate the function called compute original, which deals with the
