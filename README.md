@@ -15,3 +15,5 @@ accurately modifying the parameters of the simulation, we were able to reduce th
 clock cycles needed to execute the core functionality of our function by more than 75%.
 
 ------------------------------------------------------------------------------------
+
+Please refer to [link](/Report.pdf) for a detailed report of the project.
